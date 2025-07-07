@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+/* html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background: linear-gradient(to right, #000, #1E3A8A);
+    scroll-behavior: smooth;
+
+}
+
+@media (max-width: 768px) { 
+    body {
+      overflow-x: hidden;
+    }
+  } */
+
+  
