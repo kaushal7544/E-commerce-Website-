@@ -39,7 +39,6 @@ export default function TrekStyleNavbar() {
 
   return (
     <>
-      {/* ✅ Hide AppBar when drawer is open */}
       {!drawerOpen && (
         <AppBar
           position="fixed"
@@ -264,7 +263,7 @@ export default function TrekStyleNavbar() {
               gap: 1.5,
               px: 2,
               py: 1.2,
-              border: '2px solid #DEF2F1',
+              border: '2px dashed #DEF2F1',
               borderRadius: 2,
               color: '#DEF2F1',
               fontWeight: 'bold',
@@ -311,7 +310,7 @@ export default function TrekStyleNavbar() {
         </Box>
 
         {/* 🧭 Centered Navigation Links */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',  }}>
           <List>
             {navItems.map((item) => (
               <HashLink
@@ -350,6 +349,7 @@ export default function TrekStyleNavbar() {
               borderRadius: 2,
               backgroundColor: '#1e2a38',
               display: 'inline-block',
+              border:"2px solid #fff",
               '&:hover': {
                 backgroundColor: '#111f2b',
               },

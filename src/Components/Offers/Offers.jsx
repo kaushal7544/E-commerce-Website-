@@ -7,199 +7,133 @@ import { useNavigate } from "react-router-dom";
 
 const PromoSection = () => {
   const navigate = useNavigate();
+
+  const promoItems = [
+    {
+      title: "Up to 30% off",
+      subtitle: "Cricket Metal Spike Shoes",
+      img: img1,
+    },
+    {
+      title: "Up to 50% off",
+      subtitle: "Running Shoes",
+      img: img2,
+    },
+    {
+      title: "Up to 20% off",
+      subtitle: "Football Shoes",
+      img: img3,
+    },
+  ];
+
   return (
-    <Box sx={{ p: 4 }}>
+    <Box sx={{ p: { xs: 2, sm: 4 } }}>
       <Typography
         variant="h4"
         sx={{
-          fontWeight: 'bold',
-          mb: { xs: 2, sm: 6 },
-          fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
+          fontWeight: "bold",
+          mb: { xs: 3, sm: 6 },
+          fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
           color: "#17252A",
-          textAlign: 'center',
+          textAlign: "center",
         }}
       >
         SALE PRODUCTS
       </Typography>
-      <Grid container spacing={4} justifyContent="center">
 
-        {/* Promo Tile 1 */}
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              width: { xs: "100%", md: 514 },
-              height: 300,
-              borderRadius: 2,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              p: 4,
-              background: "#1b263b",
-              color: "#FFD700",
-              border: "2px solid #FFF",
-            }}
-          >
-            {/* Text */}
-            <Box>
-              <Typography variant="h4" fontWeight="bold" sx={{ color: "#DEF2F1" }}>
-                Up to <br /> 30% off
-              </Typography>
-              <Typography sx={{ mt: 1, mb: 2, color: "#FEFFFF" }}>
-                Cricket Metal Spike Shoes
-              </Typography>
-              <Button
-                variant="outlined"
-                sx={{
-                  borderRadius: "20px",
-                  border: "2px solid #fff",
-                  color: "#fff",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  background: "#17252A",
-                  px: 3,
-                }}
-                onClick={() => navigate("/dash-board")}
-              >
-                Shop
-              </Button>
-            </Box>
-
-            {/* Zoomable Image */}
-            <Box sx={{ overflow: "hidden", ml: 2 }}>
+      <Box sx={{
+        maxWidth: 1800,
+        mx: "auto",
+      }}>
+        <Grid container spacing={4} justifyContent="center">
+          {promoItems.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <Box
-                component="img"
-                src={img1}
                 sx={{
-                  height: "100%",
-                  maxHeight: 250,
-                  transition: "transform 0.4s ease-in-out",
-                  '&:hover': {
-                    transform: "scale(1.1)"
-                  }
+                  width: { xs: "30vh", sm: "50vh" },
+                  height: { xs: "30vh", sm: 300 },
+                  borderRadius: 2,
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  justifyContent: "space-between",
+                  alignItems: { xs: "center", sm: "center" },
+                  textAlign: { xs: "center", sm: "left" },
+                  p: { xs: 2, sm: 4 },
+                  background: "#1b263b",
+                  color: "#FFD700",
+                  border: "2px solid #FFF",
                 }}
-              />
-            </Box>
-          </Box>
-        </Grid>
-
-        {/* Promo Tile 2 */}
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              width: { xs: "100%", md: 514 },
-              height: 300,
-              borderRadius: 2,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              p: 4,
-              background: "#1b263b",
-              color: "#FFD700",
-              border: "2px solid #FFF",
-            }}
-          >
-            {/* Text */}
-            <Box>
-              <Typography variant="h4" fontWeight="bold" sx={{ color: "#DEF2F1" }}>
-                Up to <br /> 50% off
-              </Typography>
-              <Typography sx={{ mt: 1, mb: 2, color: "#FEFFFF" }}>
-                Running Shoes
-              </Typography>
-              <Button
-                variant="outlined"
-                sx={{
-                  borderRadius: "20px",
-                  background:"#17252A",
-                  border: "2px solid #fff",
-                  color: "#fff",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  px: 3,
-                }}
-                onClick={() => navigate("/dash-board")}
               >
-                Shop
-              </Button>
-            </Box>
+                {/* Text Section */}
+                <Box sx={{ flex: 1 }}>
+                  <Typography
+                    variant="h5"
+                    fontWeight="bold"
+                    sx={{
+                      color: "#DEF2F1",
+                      fontSize: { xs: "1.5rem", sm: "2rem" },
+                      mb: 1,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "#FEFFFF",
+                      mb: 2,
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
+                    }}
+                  >
+                    {item.subtitle}
+                  </Typography>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      borderRadius: "20px",
+                      border: "2px solid #fff",
+                      color: "#fff",
+                      textTransform: "none",
+                      fontWeight: 600,
+                      background: "#17252A",
+                      px: 3,
+                      fontSize: { xs: "0.8rem", sm: "1rem" },
+                    }}
+                    onClick={() => navigate("/dash-board")}
+                  >
+                    Shop
+                  </Button>
+                </Box>
 
-            {/* Zoomable Image */}
-            <Box sx={{ overflow: "hidden", ml: 2 }}>
-              <Box
-                component="img"
-                src={img2}
-                sx={{
-                  height: "100%",
-                  maxHeight: 250,
-                  transition: "transform 0.4s ease-in-out",
-                  '&:hover': {
-                    transform: "scale(1.1)"
-                  }
-                }}
-              />
-            </Box>
-          </Box>
+                {/* Image Section */}
+                <Box
+                  sx={{
+                    mt: { xs: 2, sm: 0 },
+                    ml: { sm: 2 },
+                    overflow: "hidden",
+                    maxWidth: 200,
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={item.img}
+                    sx={{
+                      width: { xs: "110%", sm: "120%" },
+                      maxHeight: { xs: 250, sm: 250},
+                      objectFit: "contain",
+                      transition: "transform 0.4s ease-in-out",
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
+                    }}
+                  />
+                </Box>
+              </Box>
+            </Grid>
+          ))}
         </Grid>
-
-        {/* Promo Tile 3 */}
-        <Grid item xs={12} md={6}>
-          <Box
-            sx={{
-              width: { xs: "100%", md: 514 },
-              height: 300,
-              borderRadius: 2,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              p: 4,
-              background: "#1b263b",
-              color: "#FFD700",
-              border: "2px solid #FFF",
-            }}
-          >
-            {/* Text */}
-            <Box>
-              <Typography variant="h4" fontWeight="bold" sx={{ color: "#DEF2F1" }}>
-                Up to <br /> 20% off
-              </Typography>
-              <Typography sx={{ mt: 1, mb: 2, color: "#FEFFFF" }}>
-                Football Shoes
-              </Typography>
-              <Button
-                variant="outlined"
-                sx={{
-                  borderRadius: "20px",
-                  background:"#17252A",
-                  border: "2px solid #fff",
-                  color: "#fff",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  px: 3,
-                }}
-                onClick={() => navigate("/dash-board")}
-              >
-                Shop
-              </Button>
-            </Box>
-
-            {/* Zoomable Image */}
-            <Box sx={{ overflow: "hidden", ml: 2 }}>
-              <Box
-                component="img"
-                src={img3}
-                sx={{
-                  height: "100%",
-                  maxHeight: 250,
-                  transition: "transform 0.4s ease-in-out",
-                  '&:hover': {
-                    transform: "scale(1.1)"
-                  }
-                }}
-              />
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 };

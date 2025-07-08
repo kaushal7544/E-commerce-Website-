@@ -21,9 +21,8 @@ const Footer = () => {
           pt: 8,
           px: { xs: 3, md: 10 },
           pb: 4,
-          position: "relative",
           maxWidth: "1800px",
-          margin: "auto",
+          mx: "auto",
         }}
       >
         {/* Content */}
@@ -57,11 +56,11 @@ const Footer = () => {
                 flexDirection: { xs: "column", sm: "row" },
                 justifyContent: "space-between",
                 textAlign: { xs: "center", sm: "left" },
-                gap: 4,
+                gap: { xs: 3, sm: 6 },
               }}
             >
               {/* Quick Links */}
-              <Box ml={15}>
+              <Box>
                 <Typography variant="h6" gutterBottom color="#1b263b">
                   Quick Links
                 </Typography>
@@ -73,11 +72,16 @@ const Footer = () => {
               </Box>
 
               {/* Support */}
-              <Box ml={15}>
+              <Box>
                 <Typography variant="h6" gutterBottom color="#1b263b">
                   Support
                 </Typography>
-                {["FAQs", "Shipping & Returns", "Privacy Policy", "Terms & Conditions"].map((text) => (
+                {[
+                  "FAQs",
+                  "Shipping & Returns",
+                  "Privacy Policy",
+                  "Terms & Conditions",
+                ].map((text) => (
                   <Typography key={text} variant="body2" color="#1b263b">
                     {text}
                   </Typography>
@@ -87,10 +91,7 @@ const Footer = () => {
           </Grid>
 
           {/* Newsletter */}
-          <Grid item xs={12} md={4}
-          sx={{
-          marginLeft: { xs: 0, md: 16 }
-          }}>
+          <Grid item xs={12} md={4}>
             <Typography
               variant="h6"
               gutterBottom
@@ -123,6 +124,7 @@ const Footer = () => {
                   backgroundColor: "#b3af8f",
                   borderRadius: 1,
                   flexGrow: 1,
+                  width: { xs: "100%", sm: "auto" },
                 }}
               />
               <Button

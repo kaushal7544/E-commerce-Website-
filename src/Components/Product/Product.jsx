@@ -1,12 +1,20 @@
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 import React from 'react';
-import { Box, Typography, Card, CardMedia, CardContent, Button } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
+  Button
+} from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useNavigate } from 'react-router-dom';
+
 import img3 from "../../assets/pro3.png";
 import img4 from "../../assets/pro4.png";
 import img5 from "../../assets/pro5.png";
@@ -75,7 +83,7 @@ const Product = () => {
               key={index}
               sx={{
                 background: "#1b263b",
-                maxWidth: { xs: 260, sm: 280, md: 300 },
+                maxWidth: { xs: 220, sm: 260, md: 300 },
                 m: { xs: 1, sm: 2 },
                 my: 2,
                 borderRadius: 2,
@@ -90,7 +98,7 @@ const Product = () => {
               <CardMedia
                 component="img"
                 sx={{
-                  height: 200,
+                  height: { xs: 140, sm: 180, md: 200 },
                   objectFit: 'cover',
                   cursor: "pointer",
                   transition: "transform 0.4s ease-in-out",

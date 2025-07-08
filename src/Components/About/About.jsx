@@ -18,7 +18,7 @@ const ProductCategories = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ py: 6,  }}>
+    <Box sx={{ py: { xs: 4, sm: 6 }, px: { xs: 2, sm: 4 } }}>
       <Typography
         variant="h4"
         align="center"
@@ -27,7 +27,8 @@ const ProductCategories = () => {
           fontWeight: "bold",
           textTransform: "uppercase",
           letterSpacing: 2,
-          mb: 4
+          mb: { xs: 3, sm: 5 },
+          fontSize: { xs: "1.5rem", sm: "2rem" }
         }}
       >
         Shop Collection
@@ -38,16 +39,15 @@ const ProductCategories = () => {
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
-          gap: 4,
-          px: 4
+          gap: { xs: 3, sm: 4 },
         }}
       >
         {products.map((product) => (
           <Card
             key={product.id}
             sx={{
-              width: 400,
-              height: 500,
+              width: { xs: 280, sm: 300, md: 360 },
+              height: { xs: 370, sm: 420, md: 480 },
               border: "2px solid #1b263b",
               display: "flex",
               flexDirection: "column",
@@ -69,7 +69,7 @@ const ProductCategories = () => {
                 flexGrow: 1,
                 cursor: "pointer"
               }}
-              onClick={() => navigate(`/${product.category}`)} 
+              onClick={() => navigate(`/${product.category}`)}
             />
 
             <CardContent
@@ -80,20 +80,23 @@ const ProductCategories = () => {
                 py: 2
               }}
             >
-              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", mb: 1, fontSize: { xs: "1rem", sm: "1.125rem" } }}
+              >
                 {product.title}
               </Typography>
 
               <Typography
                 sx={{
                   color: "#fff",
-                  fontSize: "0.875rem",
+                  fontSize: { xs: "0.8rem", sm: "0.875rem" },
                   fontWeight: 500,
                   cursor: "pointer",
                   textDecoration: "underline",
                   mt: 1
                 }}
-                onClick={() => navigate(`/${product.category}`)} 
+                onClick={() => navigate(`/${product.category}`)}
               >
                 View All
               </Typography>
