@@ -39,198 +39,199 @@ export default function TrekStyleNavbar() {
 
   return (
     <>
-      <AppBar
-        position="fixed"
-        sx={{
-          background: 'transparent',
-          backdropFilter: 'blur(12px)',
-          px: { xs: 1, sm: 2 },
-          py: { xs: 0.5, sm: 1 },
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1300,
-          boxShadow: '0 4px 30px rgba(0,0,0,0.1)',
-        }}
-      >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Typography
-            variant="h5"
-            sx={{
-              fontWeight: 'bold',
-              fontStyle: 'italic',
-              letterSpacing: 2,
-              fontFamily: 'Arial Black, sans-serif',
-              fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.75rem' },
-              background: "#DEF2F1",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            SPORTS MART
-          </Typography>
+      {/* ✅ Hide AppBar when drawer is open */}
+      {!drawerOpen && (
+        <AppBar
+          position="fixed"
+          sx={{
+            background: 'transparent',
+            backdropFilter: 'blur(12px)',
+            px: { xs: 1, sm: 2 },
+            py: { xs: 0.5, sm: 1 },
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1300,
+            boxShadow: '0 4px 30px rgba(0,0,0,0.1)',
+          }}
+        >
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 'bold',
+                fontStyle: 'italic',
+                letterSpacing: 2,
+                fontFamily: 'Arial Black, sans-serif',
+                fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.75rem' },
+                background: "#DEF2F1",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              SPORTS MART
+            </Typography>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4, marginRight: "70px" }}>
-            {navItems.map((item) => (
-              <HashLink key={item} to={navRoutes[item]} smooth style={{ textDecoration: 'none' }}>
-                <Box
-                  sx={{
-                    position: 'relative',
-                    color: item === activePage ? '#ffba75' : '#ccc',
-                    fontWeight: 800,
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                    fontFamily: 'sans-serif',
-                    background: "#DEF2F1",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      bottom: -4,
-                      height: '2px',
-                      width: item === activePage ? '50%' : '0%',
-                      backgroundColor: '#17252A',
-                      transition: 'width 0.3s ease-in-out',
-                    },
-                    '&:hover::after': {
-                      width: '50%',
-                    },
-                    ":hover": {
-                      backgroundColor: '#17252A',
-                    }
-                  }}
-                >
-                  {item}
-                </Box>
-              </HashLink>
-            ))}
-          </Box>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4, marginRight: "70px" }}>
+              {navItems.map((item) => (
+                <HashLink key={item} to={navRoutes[item]} smooth style={{ textDecoration: 'none' }}>
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      color: item === activePage ? '#ffba75' : '#ccc',
+                      fontWeight: 800,
+                      fontSize: '1rem',
+                      cursor: 'pointer',
+                      fontFamily: 'sans-serif',
+                      background: "#DEF2F1",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        bottom: -4,
+                        height: '2px',
+                        width: item === activePage ? '50%' : '0%',
+                        backgroundColor: '#17252A',
+                        transition: 'width 0.3s ease-in-out',
+                      },
+                      '&:hover::after': {
+                        width: '50%',
+                      },
+                      ":hover": {
+                        backgroundColor: '#17252A',
+                      }
+                    }}
+                  >
+                    {item}
+                  </Box>
+                </HashLink>
+              ))}
+            </Box>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Tooltip title="Search">
-              <IconButton
-                sx={{
-                  background: "#DEF2F1",
-                  color: '#000',
-                  width: { xs: 28, md: 36 },
-                  height: { xs: 28, md: 36 },
-                  ":hover": {
-                    backgroundColor: "#17252A",
-                    color: "#DEF2F1"
-                  }
-                }}
-                onClick={() => navigate('/search-bar')}
-              >
-                <SearchIcon sx={{ fontSize: { xs: '14px', md: '18px' } }} />
-              </IconButton>
-            </Tooltip>
-
-            <Tooltip title="Cart">
-              <IconButton
-                sx={{
-                  background: "#DEF2F1",
-                  color: '#000',
-                  width: { xs: 28, md: 36 },
-                  height: { xs: 28, md: 36 },
-                  ":hover": {
-                    backgroundColor: "#17252A",
-                    color: "#DEF2F1",
-                  }
-                }}
-                onClick={() => navigate('/cart-item')}
-              >
-                <ShoppingCartIcon sx={{ fontSize: { xs: '14px', md: '18px' } }} />
-              </IconButton>
-            </Tooltip>
-
-            {/* User Dropdown (Desktop) */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Tooltip title="User">
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Tooltip title="Search">
                 <IconButton
-                  onClick={(e) => setUserMenuAnchor(e.currentTarget)}
                   sx={{
                     background: "#DEF2F1",
                     color: '#000',
-                    width: 36,
-                    height: 36,
+                    width: { xs: 28, md: 36 },
+                    height: { xs: 28, md: 36 },
+                    ":hover": {
+                      backgroundColor: "#17252A",
+                      color: "#DEF2F1"
+                    }
+                  }}
+                  onClick={() => navigate('/search-bar')}
+                >
+                  <SearchIcon sx={{ fontSize: { xs: '14px', md: '18px' } }} />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Cart">
+                <IconButton
+                  sx={{
+                    background: "#DEF2F1",
+                    color: '#000',
+                    width: { xs: 28, md: 36 },
+                    height: { xs: 28, md: 36 },
                     ":hover": {
                       backgroundColor: "#17252A",
                       color: "#DEF2F1",
                     }
                   }}
+                  onClick={() => navigate('/cart-item')}
                 >
-                  <AccountCircleIcon fontSize="small" />
+                  <ShoppingCartIcon sx={{ fontSize: { xs: '14px', md: '18px' } }} />
                 </IconButton>
               </Tooltip>
 
-              <Menu
-                anchorEl={userMenuAnchor}
-                open={Boolean(userMenuAnchor)}
-                onClose={handleUserMenuClose}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                PaperProps={{
-                  sx: {
-                    backgroundColor: '#b3af8f',
-                    borderRadius: 2,
-                    mt: 1,
-                    px: 1,
-                    boxShadow: '0px 4px 12px rgba(0,0,0,0.2)',
-                    minWidth: 150,
-                  }
-                }}
-              >
-                <MenuItem
-                  onClick={() => {
-                    navigate('/login');
-                    handleUserMenuClose();
-                  }}
-                  sx={{
-                    fontWeight: 'bold',
-                    color: '#17252A',
-                    fontSize: '0.95rem',
-                    borderRadius: 1,
-                    '&:hover': {
-                      backgroundColor: '#a29f7f',
-                      color: '#fff',
-                    },
-                  }}
-                >
-                  Login
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    navigate('/signup');
-                    handleUserMenuClose();
-                  }}
-                  sx={{
-                    fontWeight: 'bold',
-                    color: '#17252A',
-                    fontSize: '0.95rem',
-                    borderRadius: 1,
-                    '&:hover': {
-                      backgroundColor: '#a29f7f',
-                      color: '#fff',
-                    },
-                  }}
-                >
-                  Sign Up
-                </MenuItem>
-              </Menu>
-            </Box>
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Tooltip title="User">
+                  <IconButton
+                    onClick={(e) => setUserMenuAnchor(e.currentTarget)}
+                    sx={{
+                      background: "#DEF2F1",
+                      color: '#000',
+                      width: 36,
+                      height: 36,
+                      ":hover": {
+                        backgroundColor: "#17252A",
+                        color: "#DEF2F1",
+                      }
+                    }}
+                  >
+                    <AccountCircleIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
 
-            {/* Mobile Menu Icon */}
-            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-              <IconButton onClick={() => setDrawerOpen(true)}>
-                <MenuIcon sx={{ color: '#DEF2F1' }} />
-              </IconButton>
+                <Menu
+                  anchorEl={userMenuAnchor}
+                  open={Boolean(userMenuAnchor)}
+                  onClose={handleUserMenuClose}
+                  anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                  transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                  PaperProps={{
+                    sx: {
+                      backgroundColor: '#b3af8f',
+                      borderRadius: 2,
+                      mt: 1,
+                      px: 1,
+                      boxShadow: '0px 4px 12px rgba(0,0,0,0.2)',
+                      minWidth: 150,
+                    }
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      navigate('/login');
+                      handleUserMenuClose();
+                    }}
+                    sx={{
+                      fontWeight: 'bold',
+                      color: '#17252A',
+                      fontSize: '0.95rem',
+                      borderRadius: 1,
+                      '&:hover': {
+                        backgroundColor: '#a29f7f',
+                        color: '#fff',
+                      },
+                    }}
+                  >
+                    Login
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      navigate('/signup');
+                      handleUserMenuClose();
+                    }}
+                    sx={{
+                      fontWeight: 'bold',
+                      color: '#17252A',
+                      fontSize: '0.95rem',
+                      borderRadius: 1,
+                      '&:hover': {
+                        backgroundColor: '#a29f7f',
+                        color: '#fff',
+                      },
+                    }}
+                  >
+                    Sign Up
+                  </MenuItem>
+                </Menu>
+              </Box>
+
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <IconButton onClick={() => setDrawerOpen(true)}>
+                  <MenuIcon sx={{ color: '#DEF2F1' }} />
+                </IconButton>
+              </Box>
             </Box>
-          </Box>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      )}
 
       {/* ✅ Fullscreen Mobile Drawer */}
       <Drawer
@@ -252,7 +253,6 @@ export default function TrekStyleNavbar() {
       >
         {/* 🔝 Login/Signup at Top */}
         <Box sx={{ pt: 4, px: 3, display: 'flex', flexDirection: 'column', gap: 2 }}>
-          {/* Login */}
           <Box
             onClick={() => {
               navigate('/login');
@@ -271,7 +271,6 @@ export default function TrekStyleNavbar() {
               fontSize: '1.05rem',
               cursor: 'pointer',
               transition: '0.3s',
-              marginTop:"50px",
               '&:hover': {
                 backgroundColor: '#DEF2F1',
                 color: '#17252A',
@@ -282,7 +281,6 @@ export default function TrekStyleNavbar() {
             Login
           </Box>
 
-          {/* Sign Up */}
           <Box
             onClick={() => {
               navigate('/signup');
@@ -312,7 +310,6 @@ export default function TrekStyleNavbar() {
           </Box>
         </Box>
 
-
         {/* 🧭 Centered Navigation Links */}
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <List>
@@ -331,7 +328,7 @@ export default function TrekStyleNavbar() {
                       fontWeight: 'bold',
                       fontSize: '1.2rem',
                       textAlign: 'center',
-                      marginBottom:"20px"
+                      marginBottom: "20px"
                     }}
                   />
                 </ListItem>
