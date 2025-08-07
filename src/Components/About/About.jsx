@@ -20,7 +20,7 @@ const ProductCategories = () => {
   return (
     <Box sx={{ py: { xs: 4, sm: 6 }, px: { xs: 2, sm: 4 } }}>
       <Typography
-        variant="h4"
+        variant="h4" 
         align="center"
         sx={{
           color: "#1b263b",

@@ -12,6 +12,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Badge
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -19,6 +20,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import { HashLink } from 'react-router-hash-link';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const navItems = ['Home', 'About Us', 'Shop', 'Contact Us'];
 
@@ -32,10 +34,14 @@ export default function TrekStyleNavbar() {
     "About Us": "/about",
     "Shop": "/dash-borad",
     "Contact Us": "/contact"
+
   };
 
   const navigate = useNavigate();
   const handleUserMenuClose = () => setUserMenuAnchor(null);
+
+  const cartItems = useSelector((state) => state.cart); // redux cart state
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <>
@@ -65,8 +71,10 @@ export default function TrekStyleNavbar() {
                 fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.75rem' },
                 background: "#DEF2F1",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                WebkitTextFillColor: "transparent",   
+                // cursor:"pointer"
               }}
+              onClick={() => navigate('/')}
             >
               SPORTS MART
             </Typography>
@@ -143,7 +151,9 @@ export default function TrekStyleNavbar() {
                   }}
                   onClick={() => navigate('/cart-item')}
                 >
-                  <ShoppingCartIcon sx={{ fontSize: { xs: '14px', md: '18px' } }} />
+                  <Badge badgeContent={totalQuantity} color="error">
+                    <ShoppingCartIcon sx={{ fontSize: { xs: '14px', md: '18px' } }} />
+                  </Badge>
                 </IconButton>
               </Tooltip>
 
@@ -310,7 +320,7 @@ export default function TrekStyleNavbar() {
         </Box>
 
         {/* 🧭 Centered Navigation Links */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',  }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
           <List>
             {navItems.map((item) => (
               <HashLink
@@ -349,7 +359,7 @@ export default function TrekStyleNavbar() {
               borderRadius: 2,
               backgroundColor: '#1e2a38',
               display: 'inline-block',
-              border:"2px solid #fff",
+              border: "2px solid #fff",
               '&:hover': {
                 backgroundColor: '#111f2b',
               },

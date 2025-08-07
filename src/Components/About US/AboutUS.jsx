@@ -23,16 +23,17 @@ const cardVariants = {
 const AboutUs = () => {
   return (
     <Box
-    sx={{
-      // bgcolor: "#000",
-      color: "#1b263b",
-      py: 6,
-      px: { xs: 2, md: 10 },
-      height: "auto",
-      pt: "7%",
-    }}
+      sx={{
+        // bgcolor: "#000",
+        color: "#1b263b",
+        py: 6,
+        px: { xs: 2, md: 10 },
+        mt: { xs: 10, md: 4 },
+        height: "auto",
+        pt: "7%",
+      }}
     >
-    <Navbar />
+      <Navbar />
       <Typography
         variant="h4"
         align="center"
@@ -41,7 +42,8 @@ const AboutUs = () => {
           textTransform: "uppercase",
           mb: 4,
           letterSpacing: 2,
-          marginLeft:"70px",
+          marginLeft: "70px",
+          ml: { xs: 1, md: 0 },
           // textDecoration: 'underline',
         }}
       >
@@ -78,20 +80,20 @@ const AboutUs = () => {
                   borderRadius: 3,
                   textAlign: "center",
                   height: "100%",
-                  transition: "all 0.3s ease", 
+                  transition: "all 0.3s ease",
                   "&:hover": {
-                    boxShadow: "0 8px 20px #1b263b", 
+                    boxShadow: "0 8px 20px #1b263b",
                   },
                 }}
-                
+
               >
                 <Icon sx={{ fontSize: 40, mb: 2, color: "#fff" }} />
                 <Typography variant="h6" fontWeight="bold" gutterBottom color="#fff">
                   {i === 0
                     ? "Quality Products"
                     : i === 1
-                    ? "Trusted by Athletes"
-                    : "24/7 Support"}
+                      ? "Trusted by Athletes"
+                      : "24/7 Support"}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#bbb" }}>
                   {i === 0 &&

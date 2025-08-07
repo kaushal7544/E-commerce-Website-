@@ -11,7 +11,7 @@ function Home() {
   return (
     <>
        <Navbar />
-       <Banner />
+       <Banner /> 
        <About />
        <Hero />
        <Product />

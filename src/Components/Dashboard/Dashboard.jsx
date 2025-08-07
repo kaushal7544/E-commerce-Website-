@@ -17,7 +17,11 @@ import {
 import { motion } from "framer-motion";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
-import { useParams, useNavigate } from "react-router-dom"; // ✅ for routing
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
+
+// images
 import img1 from "../../assets/pro1.png";
 import img2 from "../../assets/pro2.png";
 import img3 from "../../assets/pro3.png";
@@ -30,8 +34,10 @@ import img9 from "../../assets/pro9.png";
 import img10 from "../../assets/pro10.png";
 import img11 from "../../assets/pro11.png";
 import img12 from "../../assets/pro12.png";
+
+// components
 import Footer from "../Footer/Footer";
-import Navbar from "../../Components/Navbar/Navbar"
+import Navbar from "../../Components/Navbar/Navbar";
 
 const MotionCard = motion(Card);
 
@@ -44,23 +50,24 @@ const categories = [
 ];
 
 const allProducts = [
-  { id: 1, title: "Cricket Batting Glove", price: "₹1299.00", img: img1, category: "cricket" },
-  { id: 2, title: "Volleyball Net", price: "₹1499.00", img: img2, category: "volleyball" },
-  { id: 3, title: "Cricket Bat", price: "₹2499.00", img: img3, category: "cricket" },
-  { id: 4, title: "Badminton Racket", price: "₹899.00", img: img4, category: "badminton" },
-  { id: 5, title: "Football", price: "₹1499.00", img: img5, category: "football" },
-  { id: 6, title: "Cricket Pads", price: "₹2499.00", img: img6, category: "cricket" },
-  { id: 7, title: "Cricket Metal Spikes", price: "₹1799.00", img: img7, category: "cricket" },
-  { id: 8, title: "Football Keeping Glove", price: "₹999.00", img: img8, category: "football" },
-  { id: 9, title: "Football Shoes", price: "₹1999.00", img: img9, category: "football" },
-  { id: 10, title: "Season Ball", price: "₹599.00", img: img10, category: "cricket" },
-  { id: 11, title: "Shuttlecock", price: "₹199.00", img: img11, category: "badminton" },
-  { id: 12, title: "Volleyball", price: "₹1199.00", img: img12, category: "volleyball" },
+  { id: 1, title: "Cricket Batting Glove", price: "1299.00", img: img1, category: "cricket" },
+  { id: 2, title: "Volleyball Net", price: "1499.00", img: img2, category: "volleyball" },
+  { id: 3, title: "Cricket Bat", price: "2499.00", img: img3, category: "cricket" },
+  { id: 4, title: "Badminton Racket", price: "899.00", img: img4, category: "badminton" },
+  { id: 5, title: "Football", price: "1499.00", img: img5, category: "football" },
+  { id: 6, title: "Cricket Pads", price: "2499.00", img: img6, category: "cricket" },
+  { id: 7, title: "Cricket Metal Spikes", price: "1799.00", img: img7, category: "cricket" },
+  { id: 8, title: "Football Keeping Glove", price: "999.00", img: img8, category: "football" },
+  { id: 9, title: "Football Shoes", price: "1999.00", img: img9, category: "football" },
+  { id: 10, title: "Season Ball", price: "599.00", img: img10, category: "cricket" },
+  { id: 11, title: "Shuttlecock", price: "199.00", img: img11, category: "badminton" },
+  { id: 12, title: "Volleyball", price: "1199.00", img: img12, category: "volleyball" },
 ];
 
 const DashboardProducts = () => {
-  const { category } = useParams(); // ✅ Get route category like 'cricket'
+  const { category } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // ✅ Redux dispatch
 
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [displayTitle, setDisplayTitle] = useState("All Products");
@@ -77,7 +84,7 @@ const DashboardProducts = () => {
     : allProducts.filter(product => product.category === selectedCategory);
 
   const handleCategoryClick = (categoryId) => {
-    navigate(`/${categoryId}`); // ✅ Navigate to category route
+    navigate(`/${categoryId}`);
   };
 
   return (
@@ -132,7 +139,7 @@ const DashboardProducts = () => {
           </List>
         </Paper>
 
-        {/* Main Content */}
+        {/* Product Grid */}
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Typography
             variant="h4"
@@ -201,20 +208,6 @@ const DashboardProducts = () => {
                     <Typography variant="body1" color="#ccc">
                       {product.price}
                     </Typography>
-                    {/* View All Category Redirect */}
-                    {/* <Typography
-                      sx={{
-                        color: "#fff",
-                        fontSize: "0.875rem",
-                        fontWeight: 500,
-                        cursor: "pointer",
-                        textDecoration: "underline",
-                        mt: 1
-                      }}
-                      onClick={() => navigate(`/${product.category}`)} // ✅ Link to category
-                    >
-                      View All
-                    </Typography> */}
                   </CardContent>
 
                   <CardActions sx={{ justifyContent: "space-between", px: 2, pt: 0 }}>
@@ -227,12 +220,10 @@ const DashboardProducts = () => {
                         border: "2px solid #fff",
                         fontWeight: 600,
                         padding: '8px 12px',
-                        // "&:hover": {
-                        //   backgroundColor: "#fff",
-                        //   color: "#000",
-                        // }
                       }}
-                      onClick={() => navigate("/cart-item")}
+                      onClick={() => {dispatch(addToCart(product));
+                        // navigate("/cart-item");
+                      }}
                     >
                       Add to Cart
                     </Button>
@@ -246,11 +237,8 @@ const DashboardProducts = () => {
                         border: "2px solid #fff",
                         fontWeight: 600,
                         padding: '8px 12px',
-                        // "&:hover": {
-                        //   backgroundColor: "#fff",
-                        //   color: "#000",
-                        // }
                       }}
+                      onClick={() => navigate("/checkout")}
                     >
                       Buy Now
                     </Button>

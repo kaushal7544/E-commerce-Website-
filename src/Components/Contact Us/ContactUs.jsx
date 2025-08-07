@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Box,
-  Grid,
   Typography,
   TextField,
   Button,
@@ -11,12 +10,12 @@ import CallIcon from "@mui/icons-material/Call";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { motion } from "framer-motion";
-import Navbar from "../../Components/Navbar/Navbar"
+import Navbar from "../../Components/Navbar/Navbar";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: {
-    opacity: 7,
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
@@ -28,19 +27,18 @@ const fadeInUp = {
 const ContactUsSimple = () => {
   return (
     <Box
-    sx={{
-      minHeight: "auto",
-      py: 8,
-      px: 2,
-      display: "flex",
-      marginTop: "7%",
-      marginLeft:"20%",
-      justifyContent: "center",
-      alignItems: "center",
-      
-    }}
+      sx={{
+        py: { xs: 6, md: 8 },
+        px: { xs: 2, sm: 4, md: 6 },
+        mt: { xs: "60px", md: "9%" },
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
     >
-      <Navbar/>
+      <Navbar />
+
       <motion.div
         variants={fadeInUp}
         initial="hidden"
@@ -52,13 +50,14 @@ const ContactUsSimple = () => {
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
-            width: "90%",
+            width: "100%",
             maxWidth: 1000,
             borderRadius: 3,
             overflow: "hidden",
             border: "2px solid #fff",
+            mx: "auto",
             "&:hover": {
-              boxShadow: "0 8px 20px #1b263b", 
+              boxShadow: "0 8px 20px #1b263b",
             },
           }}
         >
@@ -67,11 +66,11 @@ const ContactUsSimple = () => {
             sx={{
               flex: 1,
               bgcolor: "#1b263b",
-              p: 4,
+              p: { xs: 3, sm: 4 },
               color: "#FFF",
             }}
           >
-            <Typography variant="h6" sx={{ mb: 3, fontWeight: "bold", mt:"50px" }}>
+            <Typography variant="h6" sx={{ mb: 3, fontWeight: "bold", mt: 2 }}>
               <CallIcon sx={{ mr: 1 }} />
               CALL US
             </Typography>
@@ -103,7 +102,7 @@ const ContactUsSimple = () => {
             sx={{
               flex: 1,
               bgcolor: "#1b263b",
-              p: 4,
+              p: { xs: 3, sm: 4 },
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -164,7 +163,11 @@ const ContactUsSimple = () => {
                 fontWeight: "bold",
                 borderRadius: "50px",
                 py: 1.2,
-                border:"2px solid #fff",
+                border: "2px solid #fff",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "#17252A",
+                },
               }}
             >
               SUBMIT
